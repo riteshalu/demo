@@ -1,24 +1,28 @@
 pipeline{
 	agent any
+	tools {
+ 		 maven 'MAVEN_HOME'
+	}
+
 	stages{
 		stage('SCM Checkout'){
 			steps{
-				echo "Running SCM Checkout job"
+				git branch: 'main', credentialsId: 'git_cred', url: 'https://github.com/riteshalu/demo.git'
 			}
 		}
 		stage('Build'){
 			steps{
-				echo "Running Build job"
+				sh 'mvn package'
 			}
 		}
 		stage('Test'){
 			steps{
-				echo "Running Test job"
+				sh 'mvn test'
 			}
 		}
 		stage('Deploy'){
 			steps{
-				echo "Running Deploy job"
+				sh 'mvn clean'
 			}
 		}
 	}
