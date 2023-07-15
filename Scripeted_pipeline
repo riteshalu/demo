@@ -1,0 +1,14 @@
+node{
+	stage('SCM Checkout'){
+		echo "Running SCM Checkout job"
+		}
+	stage('Build'){
+		echo "Running Build job"
+		}
+	stage('Test'){
+		echo "Running Test job"
+		}
+	stage('Deploy'){
+		echo "Running Deploy job"
+		}
+}
